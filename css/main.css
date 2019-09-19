@@ -1,0 +1,50 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+.body{
+  position: relative;
+  height: 100vh;
+}
+.board{
+  position: absolute;
+  top: 12%;
+  bottom: 20%;
+  width: 100%;
+  background-color: orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tiles{
+  background-color: green;
+}
+.opponent-hand{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  width: 100%;
+
+}
+.opponent-hand span{
+  font-size: 60px;
+}
+.user-hand{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  width: 100%;
+
+}
+.user-hand span{
+  font-size: 100px;
+  cursor: pointer;
+
+}
+span{
+  font-size: 60px;
+  cursor: default;
+}

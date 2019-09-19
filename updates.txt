@@ -1,0 +1,34 @@
+19/09/2019
+Today I started to think about how I'm going to implement the game of domino on the browser. It should be a hell of a good challenge since I have no clue how to implement this right now 🤣️. First I need to separate the things I need to do.
+There is a way to get the domino tile wanted (I'll display it here).
+
+Now I know how to display the domino tiles using their UTF code. Later I'll implement a system where only the ones that are equal to the previous ones can be inserted into the game. I also have to create a way so that the tiles move outward, from the center to the sides.
+
+I'll also need to use random numbers to give the users random domino tiles. (using Math.random() and Math.floor() )
+Back tiles UTF code only work on chrome...
+I'll probably use firstChild and lastChild to get the outward tiles.
+
+horizontal tiles => 127025 to 127073
+vertical tiles => 	127075 to 127123
+//
+method for horizontal tiles: [4|2] = 127025 + 1(number on the left)*7 + 2(number on the right)
+method for vertical tiles: [5|6] = 127075 + 5*7 + 6
+//
+I have to convert somehow the vertical tiles to horizontal ones - that will be used when the user selects a domino tile to play. I'll need to check if the selected tile has the number equal to an outward tile on the board, then get this vertical tile and get it's number in the horizontal version and then insert it on the board (or not if the play requires it - when there are no more space in the horizontal line).
+
+What I did today:
+1)Implemented a rudimentary version of the game. It has the user domino tiles, the opponent's and the board. Right now there's nothing anyone can do and I still need to implement the computer intelligence, the script that inserts the correct tile in the correct place and so on. But that will come in time.
+2)Implemented random generation of domino tiles for the user hand. I still have to fix the problem of duplicate tiles. The user can't have two identical tiles...
+
+
+Things I need to do:
+1) Create a dashboard where the users will play the game against the comptuter (first part). Then I need to implement a multiplayer game.
+2) Inside the area where the game will be played I need to separate things:
+		a)user hand
+		b)opponent hand
+		c)deck of tiles when user pass its turn
+3)Create authentication system.
+4)Find a way to make the center piece to not move when the other tiles are inserted.
+5)Find a way insert the tiles correctely into the board.
+6)Update opponents tiles while he/she puts them into the board.
+7)Remove from the deck the tiles that are already in the game (from the board, the user hand and the opponent's hand).		

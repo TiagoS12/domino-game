@@ -2,9 +2,24 @@ body{
   margin: 0;
   padding: 0;
 }
+.authentication{
+  display: none;
+}
+.authentication form{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 400px;
+  height: 300px;
+  margin: auto;
+  background-color: blue;
+}
 .body{
   position: relative;
   height: 100vh;
+
 }
 .board{
   position: absolute;
@@ -16,8 +31,21 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 .tiles{
   background-color: green;
+  overflow: auto;
+}
+.deck{
+  background-color: black;
+  color: white;
+  width: 200px;
+  position: absolute;
+  right: 20px;
+  bottom: 10%;
+  text-align: center;
+  font-size:30px;
+  cursor: pointer;
 }
 .opponent-hand{
   position: absolute;

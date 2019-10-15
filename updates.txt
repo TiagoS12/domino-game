@@ -20,6 +20,60 @@ What I did today:
 1)Implemented a rudimentary version of the game. It has the user domino tiles, the opponent's and the board. Right now there's nothing anyone can do and I still need to implement the computer intelligence, the script that inserts the correct tile in the correct place and so on. But that will come in time.
 2)Implemented random generation of domino tiles for the user hand. I still have to fix the problem of duplicate tiles. The user can't have two identical tiles...
 
+25/09/2019
+1)Created way of checking if there is a tile item or its reverse inside an array of html utf values. This will be useful when creating a system that distributes the tiles to the user, opponent and the left over.
+2)Implemented way to make sure that neither the user or the computer receives duplicate tiles. Still have to fix problem with reverse tiles - [1,0] is the same as [0,1]. But at least in the user hand there are no more obvious duplicates.
+
+
+30/09/2019
+
+1)Implemented the distribution of tiles to the user, the opponent and the stock. Since they were selected by random, the first 7 items of the tiles array go to the user, other 7 go to the opponent and 14 remains in the stock. I could use shift to take the tile from the stock and introduce into the game. I could also use shift in each play both by the computer and user.
+
+
+
+07/10/2019
+
+Here I'm again. Today I'll try to improve somethings in the web app.
+Maybe I'm using the wrong approuch. I first need to plan each step I take before implementing into the web app. I think I have to plan the first move and then go to the other parts of the game. What happens when the users logs in? The tiles are mixed and distributed (that I already did). Next? Whoever have the bigger double tile uses it. So that is what I should do next. If none of them have any double tile? A tile from the deck is taken.
+
+1)Managed to get the highest double domino tile from the user and opponent and display it in the center of the board! For now it only does it with the opponent - computer - because the user needs to click on the tile for something to happen. To overcome this issue I have to somehow convert the UTF icon to the proper HTML entity and then check if the tile clicked has the same html entity of the tile in the array on the position given by the highest double tile.
+
+08/10/2019
+Yesterday I made some advancements regarding the first move of the game. Now I have to improve the system to allow users to make the subsequent moves.
+For that I'll need a way to keep track of the possible moves the users can make. My initial idea was to have an array with 2 itens displaying the value of the pieces the users can play.
+1)Improved first play and started to implement the functionality of the subsequent moves. Now the user can make the first move and then a second one (aushduah). I need to improve the system of left and right insertion of the tiles.
+
+
+14/10/2019
+Here we go again for another attempt to improve the web app. Today I'll try to make some changes into how the domino tiles are selected and displayed in the board. Right now I don't have much control on where to put them - left or right -, neither on the process of selecting the tiles. I'll try to improve that. Also, I have to find a way to keep updating the variable moves with the numbers the players can put into the board.
+
+Questions when user clicks selected tile:
+a)does this domino tile has any of the two values in the board?
+If it does, 
+i)is it the rightward value or the leftward one?
+
+
+possible solution: create a function that from a set of arrays get the first and last value from them:
+ex: [[1,2],[2,5],[6,6],[6,1],[1,3]] returns [1,3]
+
+from there I can update the variable moves using moves = updateMoves(arr) each time the user clicks on the tile.
+
+I just have to put the array in the correct order (elaborate on that later).
+
+I could also try to implement a way to try both ways: try to put the tile on the left and then on the right.
+
+
+1)Managed to implement the user selection of domino tiles. Now users can choose the tile they want to play and the game will do the rest: so far it will choose where to put the tile. However only the player can play right now. The moves variable keeps being updated and the object containing the arrays nextPiecesLeft and nextPiecesRight are updated as well. My next goal will be to implement the functionaly on the computer.
+2)Implemented the computer's turn.
+
+
+15/10/2019
+1)Fixed problem with duplicate tiles
+2)Implemented the deck system. Now users can take domino tiles from the deck
+3)Implemented the passing system (althought there is a lot to improve).
+4)
+
+
 
 Things I need to do:
 1) Create a dashboard where the users will play the game against the comptuter (first part). Then I need to implement a multiplayer game.
@@ -29,6 +83,26 @@ Things I need to do:
 		c)deck of tiles when user pass its turn
 3)Create authentication system.
 4)Find a way to make the center piece to not move when the other tiles are inserted.
-5)Find a way insert the tiles correctely into the board.
-6)Update opponents tiles while he/she puts them into the board.
-7)Remove from the deck the tiles that are already in the game (from the board, the user hand and the opponent's hand).		
+5)Find a way insert the tiles correctely into the board.(DONE)
+6)Update opponents tiles while he/she puts them into the board.(DONE)
+7)Remove from the deck the tiles that are already in the game (from the board, the user hand and the opponent's hand). (DONE)	
+8)Go from the html utf code to an array with the two sides [left, right].	(DONE)
+9)Implement way to add tiles in the right side or left side of the board. (DONE)
+10)Implement way to make sure that neither the user or the computer receives duplicate tiles.(DONE)
+11)Now that I completed item 10) I need to create a way keep track of all the tiles in the game and distribute them to the user, the oponent, the board and the stock.(DONE)
+12)Right now there are times that the user only gets 6 domino tiles and not 7. I have to fix that. (DONE - I only had to put the i++ inside the if statement).
+13)Find a way to convert between utf icons to the characters of the domino tile and, therefore, do what I have to do with it. (DONE)
+14)Create the system of turns.
+15)Implement each play.
+16)Go throught the rules and create a feature that deals with each one of them.
+17)Develop the IA of opponent (which for now will be a bot).
+18)Create a way to update the moves variable with the current left and right values of the game. (DONE)
+19)Find a way to distinguish between left and right moves - and allow an option for the player.
+20)implement way of correctaly inserting the pieces the player wants to play. (DONE)
+21)Implement the computer's play.(DONE)
+22)Implement the deck (DONE PARTIALLY)
+23)The computer still makes wrongs plays. I have to fix that.(DONE - problem with positioning of playUser and playOpp)
+24)Right now there are duplicate domino tiles (only in the deck for what I can tell). I have to fix that.(DONE - the problem was in how I took tiles from the allTiles variable).
+25)Fix problem with double in the beginning of the game. If neither the user or computer has one, then it should take the [6,6] tile from the deck. (DONE)
+26)Fix how the domino tiles are displayed in the board.
+

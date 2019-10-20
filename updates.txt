@@ -71,7 +71,19 @@ I could also try to implement a way to try both ways: try to put the tile on the
 1)Fixed problem with duplicate tiles
 2)Implemented the deck system. Now users can take domino tiles from the deck
 3)Implemented the passing system (althought there is a lot to improve).
-4)
+
+20/10/2019
+Right now everytime the player clicks anywhere in the screen the pc makes a move. I have to fix that. Only when the user clicks on one of his tiles is that the computer should make its move. (I think i fixed it by placing the n=2 inside the if statements and not outside).
+
+I also have to fix this: when you click the opponents tile that has the same position that the correct user tile, it will run the play. Only when the user clicks the correct tile should the game continue.
+
+Today I made the change of turning the opp tiles down so that the player can't see them. I only needed to change 2 lines of code to do that.
+
+1)Created navbar with logo and links for rules and score system.
+2)Added pass and give up buttons (they don't do anything for now).
+3)Turned opp tiles down so that the player can't see them.
+4)Created modal for score and rules info.
+5)Implemented the buttom that allows users to pass the turn when they don't have any domino tile and there is none on the deck.
 
 
 
@@ -93,7 +105,7 @@ Things I need to do:
 12)Right now there are times that the user only gets 6 domino tiles and not 7. I have to fix that. (DONE - I only had to put the i++ inside the if statement).
 13)Find a way to convert between utf icons to the characters of the domino tile and, therefore, do what I have to do with it. (DONE)
 14)Create the system of turns.
-15)Implement each play.
+15)Implement each play.(DONE)
 16)Go throught the rules and create a feature that deals with each one of them.
 17)Develop the IA of opponent (which for now will be a bot).
 18)Create a way to update the moves variable with the current left and right values of the game. (DONE)
@@ -105,4 +117,11 @@ Things I need to do:
 24)Right now there are duplicate domino tiles (only in the deck for what I can tell). I have to fix that.(DONE - the problem was in how I took tiles from the allTiles variable).
 25)Fix problem with double in the beginning of the game. If neither the user or computer has one, then it should take the [6,6] tile from the deck. (DONE)
 26)Fix how the domino tiles are displayed in the board.
+27)Create classification modal.(DONE)
+28)Create instruction modal.(DONE)
+29)Create give up button.
+30)Create pass button.(DONE)
+31)Create a restart game system.(DONE)
+32)Implement score system in the game.
+33)Fix problem: right now if neither the user or the opponent have a double piece, nothing happens. When that's the case, I need to take the [6,6] piece from the deck.
 

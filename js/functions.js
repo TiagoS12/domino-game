@@ -1,5 +1,20 @@
 //right now both of the files main.js and function.js are being loaded in the html file. I have to find a way to implemente the functions in this file into the main.js file.
 
+function firstMoveComputer(){
+  //first move
+  let data = checkWhoGotBiggerDouble()//returns object with the player who has the biggest double with its position
+  if(data.player == 'opponent'){
+    t = opponentTiles.splice(data.position, 1)
+    updateOpponentTiles(opponentTiles)
+    board.push(t[0])//adds the tile to the board variable
+    for(i of board){
+      tiles.innerHTML += `<span> ${valueToVerticalHtml(i)} </span>` //updates the front-end from the variable board
+    }
+    moves = t[0]//moves is set to the value of the tile (since both left and right are the same)
+    n = 1
+    playUser = nextPlayUser()//this keeps refreshing
+  }
+}
 function valueToVerticalHtml(value){
   let verticalStart = 127075
   let codeNum = parseInt(verticalStart)+7*parseInt(value[0])+parseInt(value[1])
@@ -102,7 +117,7 @@ function setTiles(){//sets the user hand (and right now it also sets the opponen
     userHand.innerHTML += `<span id="${i}">${valueToVerticalHtml(userTiles[i])}</span>`
   }
   for (let i=0;i<opponentTiles.length;i++){
-    opponentHand.innerHTML += `<span id="${i}">${valueToVerticalHtml(opponentTiles[i])}</span>`
+    opponentHand.innerHTML += `<span id="${i}">&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag
   }
 }
 
@@ -125,7 +140,7 @@ function updateUserTiles(tiles){
 function updateOpponentTiles(tiles){
   opponentHand.innerHTML = ''
   for (let i=0;i<opponentTiles.length;i++){
-    opponentHand.innerHTML += `<span id="${i}">${valueToVerticalHtml(opponentTiles[i])}</span>`
+    opponentHand.innerHTML += `<span id="${i}">&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag
   }
 }
 
@@ -180,4 +195,10 @@ function nextPlayOpponent(){
 
 function updateMoves(board){
   return [board[0][0],board[board.length-1][1]]
+}
+function userWon(){
+  classification.user++
+}
+function oppWon(){
+  classification.opp++
 }

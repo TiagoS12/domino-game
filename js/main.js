@@ -1,9 +1,14 @@
+
 const tiles = document.querySelector('.tiles')
 const userHand = document.querySelector('.user-hand')
 //console.log(board.firstElementChild, board.lastElementChild)//outward domino tiles
 const deck = document.querySelector('.deck')
 const opponentHand = document.querySelector('.opponent-hand')
 const msg = document.querySelector('.msg')
+const restart = document.querySelector('.restart')
+const restartBtn = document.getElementById('restart')
+const passTurn = document.querySelector('.pass')
+const giveUp = document.querySelector('.giveup')
 
 var n = 0
 
@@ -11,33 +16,19 @@ let allTiles = []
 let userTiles = []
 let opponentTiles = []
 let board = []
-var playUser
-var playOpp
-var moves //this is the variable responsible to display the possible moves the players can make. It will be an array with two numbers: the one in the left will be the number whose pieces can be inserted in the left and the other just the same thing but in the right.
+let playUser
+let playOpp
+let moves //this is the variable responsible to display the possible moves the players can make. It will be an array with two numbers: the one in the left will be the number whose pieces can be inserted in the left and the other just the same thing but in the right.
+let classification = {user: 0, opp: 0}
 
 setAllTiles()
 setTiles()
-
-//first move
-let data = checkWhoGotBiggerDouble()//returns object with the player who has the biggest double with its position
-if(data.player == 'opponent'){
-  t = opponentTiles.splice(data.position, 1)
-  updateOpponentTiles(opponentTiles)
-  board.push(t[0])//adds the tile to the board variable
-  for(i of board){
-    tiles.innerHTML += `<span> ${valueToVerticalHtml(i)} </span>` //updates the front-end from the variable board
-  }
-  moves = t[0]//moves is set to the value of the tile (since both left and right are the same)
-  n = 1
-  playUser = nextPlayUser()//this keeps refreshing
-
-}
-
-
+firstMoveComputer()
 
 window.onclick = function(element){
-
+  console.log(element.target)
   if(n == 0){//first play by the user
+    let data = checkWhoGotBiggerDouble()//returns object with the player who has the biggest double with its position
     let tile = '&#'+element.target.innerHTML.codePointAt(0)+';'//This was the answer!
     if(tile == valueToVerticalHtml(userTiles[data.position])){
       let t = userTiles.splice(data.position, 1)
@@ -60,6 +51,29 @@ window.onclick = function(element){
   }
 
   if(n == 1){
+    //Tile requested from DECK
+    if(element.target == deck){//getting tile from deck
+      if(allTiles.length == 0){
+        alert('there are no more domino tiles in the deck!')
+      }
+      else{
+        let d = allTiles.shift()
+        userTiles.push(d)
+        updateUserTiles(userTiles)
+        playUser = nextPlayUser()
+        n = 1
+      }
+      console.log('you clicked in the deck')
+    }
+
+    if(element.target == passTurn){
+      if(playUser.nextPiecesLeft.length == 0 && playUser.nextPiecesRight.length == 0 && allTiles.length == 0){
+        alert('You passed your turn!')
+        n=2
+      }
+    }
+
+
     let tile = '&#'+element.target.innerHTML.codePointAt(0)//codePointAt was the answer!
     pos = parseInt(element.target.id)
 
@@ -115,44 +129,34 @@ window.onclick = function(element){
       moves = updateMoves(board)
       playUser = nextPlayUser()//this keeps refreshing
 
+      n=2
     }
-    if(playUser.nextPiecesLeft.length == 0 && playUser.nextPiecesRight.length == 0 && allTiles.length == 0){
-      alert('You passed')
-    }
-
-    n = 2
   }
   //WHEN THE USER WINS THE GAME
-  if(userTiles.length == 0){
+  if(userTiles.length == 0 && n!=99){
     alert('You won!')
+    userWon()
     opponentTiles = []
     userTiles = []
     board = []
+    allTiles = []
+    moves = []
+    tiles.innerHTML = ''
     userHand.innerHTML = ''
     opponentHand.innerHTML = ''
-    board.innerHTML = ''
+    restart.style.display ='block'
+    n = 99//prevents this execution again
   }
 
-  //Tile requested from DECK
-  if(element.target == deck){//getting tile from deck
-    if(allTiles.length == 0){
-      alert('there are no more domino tiles in the deck!')
-    }
-    else{//it's working now. Added last statement because if the are no more tiles in the deck the while loop should stop
-      let d = allTiles.shift()
-      userTiles.push(d)
-      updateUserTiles(userTiles)
-      playUser = nextPlayUser()
-      n = 1
-    }
-    console.log('you clicked in the deck')
-  }
 
 
   if(n == 2){
     setTimeout(function(){//computer play
       playOpp = nextPlayOpponent()
 
+      if(playOpp.nextPiecesLeft.length == 0 && playOpp.nextPiecesRight.length==0 && allTiles.length == 0){
+        alert('Your opponent just passed its turn!')
+      }
       if(playOpp.nextPiecesRight.length == 0 && playOpp.nextPiecesLeft.length == 0){
         while(playOpp.nextPiecesRight.length == 0 || playOpp.nextPiecesLeft.length == 0){//it's working now. Added last statement because if the are no more tiles in the deck the while loop should stop
           if(allTiles.length == 0){
@@ -207,25 +211,67 @@ window.onclick = function(element){
       console.log('computers play',playOpp,'user play' ,playUser,'moves', moves, 'board', board)
 
 
-      if(playOpp.nextPiecesLeft.length == 0 && playOpp.nextPiecesRight.length==0 && allTiles.length == 0){
-        alert('computer passes')
-      }
-      if(playOpp.nextPiecesLeft.length == 0 && playOpp.nextPiecesRight.length==0 && playUser.nextPiecesLeft.length == 0 && playUser.nextPiecesRight.length == 0 && allTiles.length == 0){
-        alert('Tied game!')
-      }
       //WHEN THE COMPUTER WINS THE GAME
-      if(opponentTiles.length == 0){
+      if(opponentTiles.length == 0 && n != 99){
         alert('You lost!')
+        oppWon()
         opponentTiles = []
         userTiles = []
         board = []
+        allTiles = []
+        moves = []
         userHand.innerHTML = ''
         opponentHand.innerHTML = ''
-        board.innerHTML = ''
+        tiles.innerHTML = ''
+        restart.style.display ='block'
+        n = 99//prevents this execution again
+      }
 
+      if(playOpp.nextPiecesLeft.length == 0 && playOpp.nextPiecesRight.length==0 && playUser.nextPiecesLeft.length == 0 && playUser.nextPiecesRight.length == 0 && allTiles.length == 0){
+        alert('Tied game!')
+        opponentTiles = []
+        userTiles = []
+        board = []
+        allTiles = []
+        moves = []
+        tiles.innerHTML = ''
+        userHand.innerHTML = ''
+        opponentHand.innerHTML = ''
+        restart.style.display ='block'
       }
 
       n = 1
     }, 2000)
   }
+}
+
+restartBtn.onclick = function(){
+  n = 0
+  setAllTiles()
+  setTiles()
+  firstMoveComputer()
+  restart.style.display = 'none'
+}
+
+
+//events while playing (rules, classification, and so on)
+const close = document.querySelector('.close')
+const rulesBtn = document.getElementById('rules')
+const scoreBtn = document.getElementById('score')
+const rules = document.querySelector('.rules')
+const score = document.querySelector('.score')
+const modal = document.querySelector('.modal')
+
+rulesBtn.onclick = function(){
+  modal.style.display = 'block'
+  rules.style.display = 'block'
+}
+scoreBtn.onclick = function(){
+  modal.style.display = 'block'
+  score.style.display = 'block'
+}
+close.onclick = function(){
+  modal.style.display = 'none'
+  score.style.display = 'none'
+  rules.style.display = 'none'
 }

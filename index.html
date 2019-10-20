@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>Domino game</title>
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class="authentication">
@@ -13,7 +14,29 @@
         <button>Enter game</button>
       </form>
     </div>
+
+    <div class="modal">
+      <span class="close">&times;</span>
+      <div class="rules">
+        <p>This is the page where you can see all the rules of the game.</p>
+      </div>
+      <div class="score">
+        <p>This is the page where you can see your score</p>
+      </div>
+    </div>
+
     <div class="body">
+      <nav>
+        <div class="logo">
+          <img src="images/dominoes.svg" alt="img">
+          <span>Dominow</span>
+        </div>
+
+        <ul>
+          <li><a id="rules" href="#">Regras</a></li>
+          <li><a id="score" href="#">Classificações</a></li>
+        </ul>
+      </nav>
       <div class="opponent-hand">
         <!-- <span>&#127074;</span>
         <span>&#127074;</span>
@@ -24,26 +47,25 @@
         <span>&#127074;</span> -->
 
       </div>
-      <div class="rules">
-        <ul>
-          <li><a href="#">Regras</a></li>
-          <li><a href="#">Configurações</a></li>
-        </ul>
 
-      </div>
-      <div class="score">
-
-      </div>
       <div class="board">
-        <div class="tiles">
-
-        </div>
+        <div class="tiles"></div>
         <div class="deck">
-          <p>DECK</p>
+          DECK
         </div>
       </div>
-      <div class="user-hand">
+      <div class="pass">
+        Pass
+      </div>
+      <div class="giveup">
+        Give up
+      </div>
+      <div class="user-hand"></div>
 
+
+      <div class="restart">
+        <p>That was an interesting game! Would you like to play again?</p><br>
+        <a href="#" id="restart">Restart game</a>
       </div>
     </div>
   <script src="js/functions.js"></script>

@@ -1,16 +1,19 @@
-
 const tiles = document.querySelector('.tiles')
 const userHand = document.querySelector('.user-hand')
 //console.log(board.firstElementChild, board.lastElementChild)//outward domino tiles
 const deck = document.querySelector('.deck')
 const opponentHand = document.querySelector('.opponent-hand')
-const msg = document.querySelector('.msg')
+const msgTurn = document.querySelector('.msg-turn')
 const restart = document.querySelector('.restart')
 const restartBtn = document.getElementById('restart')
 const passTurn = document.querySelector('.pass')
 const giveUp = document.querySelector('.giveup')
+const quit = document.querySelector('.quit')
+const playAgainBtn = document.getElementById('play-again')
+const userScore = document.querySelectorAll('.userScore')
+const opponentScore = document.querySelectorAll('.opponentScore')
 
-var n = 0
+let n = 0
 
 let allTiles = []
 let userTiles = []
@@ -26,7 +29,7 @@ setTiles()
 firstMoveComputer()
 
 window.onclick = function(element){
-  console.log(element.target)
+
   if(n == 0){//first play by the user
     let data = checkWhoGotBiggerDouble()//returns object with the player who has the biggest double with its position
     let tile = '&#'+element.target.innerHTML.codePointAt(0)+';'//This was the answer!
@@ -45,16 +48,18 @@ window.onclick = function(element){
       }
       moves = t[0]
       playUser = nextPlayUser()//this keeps refreshing
-      console.log(playUser)
+
       n = 2
+      msgTurn.innerHTML = 'Opponent\'s turn'
     }
   }
 
   if(n == 1){
+
     //Tile requested from DECK
     if(element.target == deck){//getting tile from deck
       if(allTiles.length == 0){
-        alert('there are no more domino tiles in the deck!')
+        alert('There are no more domino tiles in the deck!')
       }
       else{
         let d = allTiles.shift()
@@ -70,6 +75,10 @@ window.onclick = function(element){
       if(playUser.nextPiecesLeft.length == 0 && playUser.nextPiecesRight.length == 0 && allTiles.length == 0){
         alert('You passed your turn!')
         n=2
+        msgTurn.innerHTML = 'Opponent\'s turn'
+      }
+      else{
+        alert('You can\'t pass your turn. You have domino tiles to play.')
       }
     }
 
@@ -104,6 +113,7 @@ window.onclick = function(element){
       playUser = nextPlayUser()//this keeps refreshing
       console.log(moves, playUser)
       n = 2
+      msgTurn.innerHTML = 'Opponent\'s turn'
     }
     else if(playUser.nextPiecesLeft.includes(pos)){
       let where = 'left'
@@ -130,6 +140,7 @@ window.onclick = function(element){
       playUser = nextPlayUser()//this keeps refreshing
 
       n=2
+      msgTurn.innerHTML = 'Opponent\'s turn'
     }
   }
   //WHEN THE USER WINS THE GAME
@@ -145,12 +156,22 @@ window.onclick = function(element){
     userHand.innerHTML = ''
     opponentHand.innerHTML = ''
     restart.style.display ='block'
-    n = 99//prevents this execution again
+    restartBtn.style.display = 'block'
+    deck.style.display = 'none'
+    passTurn.style.display = 'none'
+    giveUp.style.display = 'none'
+    msgTurn.innerHTML = ''
+    //the second userScore and opponenScore [1] span tags are the ones in the restart section
+    userScore[1].innerHTML = classification.user
+    opponentScore[1].innerHTML = classification.opp
+
+    n = 99//prevents any other event from the game to happen since the game was over
   }
 
 
 
   if(n == 2){
+    n = 1
     setTimeout(function(){//computer play
       playOpp = nextPlayOpponent()
 
@@ -224,10 +245,18 @@ window.onclick = function(element){
         opponentHand.innerHTML = ''
         tiles.innerHTML = ''
         restart.style.display ='block'
-        n = 99//prevents this execution again
+        msgTurn.innerHTML = ''
+        restartBtn.style.display = 'block'
+        deck.style.display = 'none'
+        passTurn.style.display = 'none'
+        giveUp.style.display = 'none'
+        //the second userScore and opponenScore [1] span tags are the ones in the restart section
+        userScore[1].innerHTML = classification.user
+        opponentScore[1].innerHTML = classification.opp
+        n = 99//prevents any other event from the game to happen since the game was over
       }
 
-      if(playOpp.nextPiecesLeft.length == 0 && playOpp.nextPiecesRight.length==0 && playUser.nextPiecesLeft.length == 0 && playUser.nextPiecesRight.length == 0 && allTiles.length == 0){
+      if(playOpp.nextPiecesLeft.length == 0 && playOpp.nextPiecesRight.length==0 && playUser.nextPiecesLeft.length == 0 && playUser.nextPiecesRight.length == 0 && allTiles.length == 0 && n!=99){
         alert('Tied game!')
         opponentTiles = []
         userTiles = []
@@ -238,9 +267,17 @@ window.onclick = function(element){
         userHand.innerHTML = ''
         opponentHand.innerHTML = ''
         restart.style.display ='block'
+        msgTurn.innerHTML = ''
+        deck.style.display = 'none'
+        passTurn.style.display = 'none'
+        giveUp.style.display = 'none'
+        userScore[1].innerHTML = classification.user
+        opponentScore[1].innerHTML = classification.opp
+        n = 99//prevents any other event from the game to happen since the game was over
       }
 
-      n = 1
+
+      msgTurn.innerHTML = 'Your turn'
     }, 2000)
   }
 }
@@ -251,8 +288,40 @@ restartBtn.onclick = function(){
   setTiles()
   firstMoveComputer()
   restart.style.display = 'none'
+  deck.style.display = 'flex'
+  passTurn.style.display = 'block'
+  giveUp.style.display = 'block'
 }
-
+giveUp.onclick = function(){
+  if(confirm("Do you really want to quit the game?")){
+    alert('You lost!')
+    oppWon()
+    opponentTiles = []
+    userTiles = []
+    board = []
+    allTiles = []
+    moves = []
+    tiles.innerHTML = ''
+    userHand.innerHTML = ''
+    opponentHand.innerHTML = ''
+    quit.style.display = 'block'
+    deck.style.display = 'none'
+    passTurn.style.display = 'none'
+    giveUp.style.display = 'none'
+    msgTurn.innerHTML = ''
+    n=99 //prevents any other event from the game to happen since the game was over
+  }
+}
+playAgainBtn.onclick = function(){
+  n = 0
+  setAllTiles()
+  setTiles()
+  firstMoveComputer()
+  quit.style.display = 'none'
+  deck.style.display = 'flex'
+  passTurn.style.display = 'block'
+  giveUp.style.display = 'block'
+}
 
 //events while playing (rules, classification, and so on)
 const close = document.querySelector('.close')
@@ -269,6 +338,9 @@ rulesBtn.onclick = function(){
 scoreBtn.onclick = function(){
   modal.style.display = 'block'
   score.style.display = 'block'
+  //the first userScore and opponenScore [1] span tags are the ones in the score modal section
+  userScore[0].innerHTML = classification.user
+  opponentScore[0].innerHTML = classification.opp
 }
 close.onclick = function(){
   modal.style.display = 'none'

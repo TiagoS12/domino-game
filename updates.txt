@@ -85,6 +85,21 @@ Today I made the change of turning the opp tiles down so that the player can't s
 4)Created modal for score and rules info.
 5)Implemented the buttom that allows users to pass the turn when they don't have any domino tile and there is none on the deck.
 
+21/10/2019
+1)Implemented give up button.
+2)Implemented score system.
+3)Implemented score update both in the restart div and in the score modal.
+4)Implemented message displaying who's turn is.
+5)Inserted information in the rules' modal.
+
+24/10/2019
+I have to implement the hard difficulty today. How am I going to do that? I don't know yet. But that's why I'm writing things here. One alternative is to have the computer counting the number of tiles of a particular value. Then, if only the computer has it, it has to play others and keep one side of the board locked.
+
+I also have to fix the case when neither the user or the opponent have a double tile.
+
+27/10/2019
+1)Fixed problem with button in when the game is tied. Before it wasn't being displayed.
+2)Fixed problem: when the game was tied, if you clicked anywhere a message with "You won" was displayed and one point was given. Now that doesn't happen anymore and was happening because I didn't insert the n=99 line of code.
 
 
 Things I need to do:
@@ -116,12 +131,16 @@ Things I need to do:
 23)The computer still makes wrongs plays. I have to fix that.(DONE - problem with positioning of playUser and playOpp)
 24)Right now there are duplicate domino tiles (only in the deck for what I can tell). I have to fix that.(DONE - the problem was in how I took tiles from the allTiles variable).
 25)Fix problem with double in the beginning of the game. If neither the user or computer has one, then it should take the [6,6] tile from the deck. (DONE)
-26)Fix how the domino tiles are displayed in the board.
+26)Fix how the domino tiles are displayed in the board. Right now they keep sliding to the right or left when the user and opp play their turns.
 27)Create classification modal.(DONE)
 28)Create instruction modal.(DONE)
-29)Create give up button.
+29)Create give up button.(DONE)
 30)Create pass button.(DONE)
 31)Create a restart game system.(DONE)
-32)Implement score system in the game.
-33)Fix problem: right now if neither the user or the opponent have a double piece, nothing happens. When that's the case, I need to take the [6,6] piece from the deck.
+32)Implement score system in the game.(DONE)
+33)Fix problem: right now if neither the user or the opponent have a double piece, nothing happens. When that's the case, I need to shuffle the tiles again and redistribute them.
+34)Fix problem: if the player clicks in the opp tile that has the same position of a tile the user can play, then the play will be made. That's because both have the same span tag and the id equal to the position in the array.
+35)Implement easy, medium and hard difficulties.
+36)Fix problem: if you click a lot in multiple playable tiles, they will be added to the board.
+37)
 

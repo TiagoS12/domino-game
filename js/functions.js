@@ -1,7 +1,6 @@
 //right now both of the files main.js and function.js are being loaded in the html file. I have to find a way to implemente the functions in this file into the main.js file.
 
 function firstMoveComputer(){
-  //first move
   let data = checkWhoGotBiggerDouble()//returns object with the player who has the biggest double with its position
   if(data.player == 'opponent'){
     t = opponentTiles.splice(data.position, 1)
@@ -12,6 +11,7 @@ function firstMoveComputer(){
     }
     moves = t[0]//moves is set to the value of the tile (since both left and right are the same)
     n = 1
+    msgTurn.innerHTML = 'Your turn'
     playUser = nextPlayUser()//this keeps refreshing
   }
 }
@@ -59,8 +59,6 @@ function orderHorizontalTilesForBoard(tile, valueToMatch, where){//I have to mak
       arr = [tile[1], tile[0]]
     }
   }
-  let a = arr[0]
-  let b = arr[1]
   return arr
 }
 
@@ -140,7 +138,7 @@ function updateUserTiles(tiles){
 function updateOpponentTiles(tiles){
   opponentHand.innerHTML = ''
   for (let i=0;i<opponentTiles.length;i++){
-    opponentHand.innerHTML += `<span id="${i}">&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag
+    opponentHand.innerHTML += `<span id="${i}">&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag &#127074;
   }
 }
 

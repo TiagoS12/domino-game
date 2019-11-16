@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Domino game</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="start-menu">
+      <div class="authentication">
+        <form class="register">
+          <input  class="username" placeholder="Insert your username" type="text"><br>
+          <input  class="password" type="password" placeholder="Insert your password"><br>
+          <button>Enter game</button>
+        </form>
+      </div>
+      <div class="initial">
+      <p>Welcome to Dominow!</p>
+        <ul>
+          <li id="play" ><a>Play</a></li>
+          <li><a href="#">Rules</a></li>
+        </ul>
+      </div>
+
+      <div class="difficulty">
+        <form class="set-difficulty">
+          <a href="#" id="back"><img width="30px" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_53616.png&f=1&nofb=1"></a><br><br>
+          <div class="radio-diff">
+            <input type="radio" name="hard" value="easy">Easy<br>
+            <input type="radio" name="hard" value="medium">Medium<br>
+            <input type="radio" name="hard" value="hard">Hard<br>
+          </div>
+          <button type="submit">Play game</button>
+        </form>
+      </div>
+  </div>
+
+
+    <div class="game">
+      <div class="modal">
+        <span class="close">&times;</span>
+
+          <div class="rules">
+            <p style="font-size: 30px; text-align:center">Rules</p>
+            <p>
+            <b>Shuffling the Tiles</b><br>
+            Before every game, a player shuffles the tiles face down on a flat playing surface, thoroughly mixing them by moving them with his hands. The player's hands may not stay on the same tiles while shuffling, and the player who does the shuffling should be the last to draw his hand for the game.
+            Players may choose to take turns shuffling before each game or the same player may shuffle the dominoes before each game.
+            Here are two of several options: 1) The player to the right of the player making the first play does the shuffling for a game; or, 2) The winner of the previous game shuffles for the next game.
+            </p>
+            <p>
+            <b>Seating Arrangement</b><br>
+            A player's position at the table in a game with three or more players is called a seat.
+            One way to determine seating arrangements is by lot. After the tiles are shuffled, each player draws a domino from the stock. The player who draws the tile with the greatest number of pips has first choice of seats. The player holding the next highest seats himself to the left, and so on. If there is a tie, it is broken by drawing new dominoes from the stock. The tiles are returned to the stock and reshuffled before the players draw their hands. When a partnership game is played, the partners sit opposite each other.
+            </p>
+            <p>
+            <b>Order of Play</b><br>
+            There are several different ways to determine which player will make the first play: 1) Draw lots. 2) Begin the game by setting the heaviest domino. 3) Have the winner of the previous game make the first play of the next game. After it is determined who will make the first play of the game, the order of play will be decided by the seating arrangement. Play will continue to the left, clockwise, after the first play is made. Or, you may choose to play in a counter-clockwise rotation, as is done in some Latin American countries, as long as all players agree to it before the game.
+            Drawing Lots to Determine Who Will Make the First Play
+            After the tiles are shuffled, each player draws a domino from the stock. The player who draws the heaviest tile will make the first play. If there is a tie, it is broken by drawing new dominoes from the stock.
+
+            </p>
+            <p>
+            <b>Beginning the Game by Setting the Heaviest Domino</b><br>
+            In some domino games, the rules state that the first play must be made by the player with the highest double in his hand. Rules for other games state that the first play must be made by the player with the heaviest domino, double or single, as the case may be.
+            Highest Double: After the tiles are shuffled, each player draws his hand from the stock. The player who draws the highest double of the set (i.e., double-9 if playing with a double-9 set), plays it as the lead. If the highest double was not drawn, the second highest double is played. If the second highest double was not drawn, the third highest double is played, and so on, until a double is played. If none of the players holds a double in his hand, all hands are discarded, reshuffled, and new hands are drawn. After the first player sets his double, the second play is made by the player to his left and play continues clockwise.
+            Heaviest Tile: Follow the instructions above for "Highest Double" with this exception: Instead of drawing new hands if no player holds a double tile, the player holding the heaviest single begins play.
+            Winner of the Last Game: The winner of the last game played may open the next game. Or, if a game ends in a tie, the player who placed the last tile plays the first tile in the next game.
+            </p>
+            <p>
+            <b>Drawing the Hand</b><br>
+            Each player draws the number of tiles specified in the rules for the domino game being played and then places them in front of himself in such a way that the other players can't see the pips on his tiles.
+            After all hands have been drawn, there may be a surplus of tiles left in the stock. These tiles should remain face down, and, depending on the rules of the game being played, may be bought (See "Passing and Byeing" below.) later in that game.
+            </p>
+            <p>
+            <b>Opening the Game</b><br>
+            Determine who will make the first play, as explained above in "Order of Play" and according to the rules of the particular domino game being played. The player making the first play may be referred to as the setter, the downer, or the leader. He should place his tile face up in the middle of the table.
+            The words set, down, and lead are all used as verbs to refer to the act of making the first play of the game. "The set," "the down," and "the lead" are used as nouns to refer to the first domino played in a game and also the first play of the game.
+            Here is a rule variation that players may agree to employ: Anytime a player plays a double, whether for the opening of the game or anytime thereafter during the game, he may immediately play a second tile onto his double before the next player makes his play.
+            </p>
+            <p>
+            <b>Passing and Byeing</b><br>
+            Any player who does not hold a tile in his hand with the correct number of pips, and therefore cannot make the next play, must either pass or bye from the stock, according to the rules of the game. Some games permit players to skip a play if they so choose, even if they hold a playable tile.
+            Passing is also called knocking and renouncing. The player who is unable to make a play must announce to the other players, "I pass," and then the next player takes his turn. If no one is able to make a play, the game ends.
+            In some games byeing tiles from the stock is allowed. In this case, a player draws the number of tiles he is permitted to take according to the rules of that game, adding them to the tiles he is holding in his hand. Once the player has drawn a tile he is able to play, he plays that domino.
+            There are many domino games that have the rule that all tiles in the stock may be bought, and there are others which have the rule that some tiles must be left in the stock and can not be bought. In the case of the latter, the number of pips on the tiles left in the stock at the end of the game would be added to the winner's score.
+            </p>
+            <p>
+            <b>Line of Play</b><br>
+            There are many domino games that depend upon matching suits. In these games, the first player sets his domino, then the player to his left adds his tile to one of the free ends, and so on, going clockwise around the table with each player adding a tile. Players add tiles that have the matching number of pips with an open end of an already played tile.
+            As each player matches and plays a tile, a line is formed. This configuration of dominoes is called the layout, string, or line of play. In order to prevent tiles from falling off the table when the line of play extends too far, dominoes may be played in any direction. Regardless of the pattern of the line of play, the open end of the last domino played remains the same.
+            Dominoes are joined to the line of play in two ways: 1) with the line of play, lengthwise, the dominoes played end to end; or, 2) across the line of play, crosswise, the dominoes played across the matching number. In most domino games, doubles, and only doubles, are played crosswise; singles are played lengthwise, and the next tile is added after each double played, if the double is not a spinner, must be lengthwise.
+            </p>
+            <p>
+            <b>Spinners</b><br>
+            A spinner is a double which can be played on all four sides. Depending on the rules of the game being played, the double played as the lead is the only spinner of the game; or, every double played throughout the game is a spinner. If the double played is not a spinner, it may be played on only two sides.
+
+            </p>
+            <p>
+            <b>Scoring</b><br>
+            In some domino games, part of the score is obtained from the total number of pips at the ends of the line of play as the game progresses. If only one domino has been played, both ends of that domino are ends of the line of play. Thus, if a 5-5 tile is played, the count would be 10.
+            If two dominoes have been played, the count depends on whether both tiles are with the line of play or one tile is with and the other tile is across the line of play. For example, if the 3-5 and 5-1 tiles are played, the count is 4 (3+1). The matching halves of each of the two dominoes would be joined, end to end, with the open ends being 3 and 1. If the 3-5 and 5-5 tiles are played, the count is 13 (3+5+5). The double tile, 5-5, would be played across the line of play, and both halves of the double would be considered ends of the line of play.
+            </p>
+            <p>
+            Given the last example, if a tile is now played on the 5-5, assuming it is not a spinner, the 5-5 is no longer an end for the purpose of counting. See the example below. The line of play is 3-5, 5-5, 5-1, and the count is 4 (3+1). If the 5-5 is not a spinner in this case, the 5-5 is not an end.
+            In some domino games, a score is made only when the count of the ends of the line of play are a multiple of 5 or a multiple of 3, for example.
+            Another scoring method used in many domino games is to take the losing players' total number of pips by counting the pips on the tiles left in their hands at the end of a hand or the game and then adding that number to the winner's score.
+            Here is a rule variation that players may agree to employ: When counting the pips on the tiles left in the losers' hands at the end of a hand or the game, count only one end of a double (i.e., 4-4 counts as only 4 points).
+            </p>
+            <p>
+            <b>End of the Game</b><br>
+            Some domino games end once a certain number of hands have been played or a player or team makes the necessary points to win. For many other domino games, the object of the game is to be the first player (or team) to dispose of all the dominoes in your hand. These domino games end when a player has played all the dominoes in his hand before the other players and announces, "Domino."
+            Sometimes none of the players are able to make another play. This is called a blocked game, and, in case the game is blocked and no one is able to make another play, the game would end.
+            </p>
+            <p>
+
+            What To Do If These Accidents Occur:
+
+            <b>Dominoes Are Exposed In Error</b><br>
+            If your domino is accidentally exposed to another player, it must then be exposed to all of the players.
+            <b>Too Many Tiles Are Drawn</b><br>
+
+            If a player draws more tiles for his hand than he is entitled to, it is called an overdraw. Once an overdraw has been discovered, the player to the right of the overdrawn hand takes the extra dominoes from the overdrawn hand, without looking at them, and returns them to the stock. The deck should then be reshuffled before anyone else draws his hand.
+            Here is a rule variation that players may agree to employ: Expose the overdrawn tiles to all players before returning them to the stock and then reshuffling the deck.
+
+            <b>Not Enough Tiles Are Drawn</b><br>
+            If a player draws fewer tiles for his hand than he is entitled to, it is called an underdraw. Once an underdraw has been discovered, he draws the necessary tiles from the stock to complete his hand.
+            <b>A Domino Is Played In Error</b><br>
+            When a player plays the wrong domino, it is called a misplay. If a player misplays (for example, joins a 2 to a 3) and it is discovered before the next player makes his play, he must restore the misplayed tile to his hand and play a correct tile. If a player misplays and no one notices until after the next play has been made, the wrong tile is considered played and cannot be replaced with the correct tile. If a score is realized on the undiscovered misplay, the player is allowed to keep it.
+            If it is not a misplay, once a tile is played and a player takes his hand off the tile, it may not be taken up by the player.
+            <b>A Player Plays Out Of Turn</b><br>
+            When a player plays out of turn, it is called a misplay. If a player plays out of turn and it is discovered before the next player makes his play, he must recall his tile. If a player plays out of turn and it is not discovered before the next play, the misplay must stand. If a score is realized on the misplay, the player is allowed to keep it.</p>
+            <p>Reference: <a href="https://www.dominorules.com/the-basics">https://www.dominorules.com/the-basics</a></p>
+      </div>
+
+      <div class="score">
+        <p>You: <span style="font-size: 40px;" class="userScore"></span></p>
+        <p>Opponent: <span style="font-size: 40px;" class="opponentScore"></span></p>
+      </div>
+    </div>
+
+      <nav>
+        <div class="logo">
+          <img src="images/dominoes.svg" alt="img">
+          <span>Dominow</span>
+        </div>
+
+        <ul>
+          <li><a id="rules" href="#">Rules</a></li>
+          <li><a id="score" href="#">Score</a></li>
+        </ul>
+      </nav>
+      <div class="opponent-hand">
+        <!-- <span>&#127074;</span>
+        <span>&#127074;</span>
+        <span>&#127074;</span>
+        <span>&#127074;</span>
+        <span>&#127074;</span>
+        <span>&#127074;</span>
+        <span>&#127074;</span> -->
+
+      </div>
+
+      <div class="board">
+        <div class="tiles"></div>
+        <div class="deck">
+          DECK
+        </div>
+      </div>
+      <div class="pass">
+        Pass turn
+      </div>
+      <div class="giveup">
+        Give up
+      </div>
+      <div class="user-hand"></div>
+      <div class="msg-turn">Your turn</div>
+
+      <div class="restart">
+        <p>You: <span style="font-size: 40px;" class="userScore"></span></p>
+        <p>Opponent: <span style="font-size: 40px;" class="opponentScore"></span></p>
+        <p>That was an interesting game! Would you like to play again?</p><br>
+        <a href="#" id="restart">Restart game</a>
+      </div>
+      <div class="quit">
+        <p>You just quit the game! You can play again if you want.</p>
+        <a href="#" id="play-again">Play again</a>
+
+      </div>
+    </div>
+  <script src="js/functions.js"></script>
+  <script src="js/main.js"></script>
+  </body>
+</html>

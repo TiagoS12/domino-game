@@ -28,6 +28,7 @@ body{
   width: 150px;
 }
 .start-menu{
+  display: block;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -229,13 +230,46 @@ nav span{
   bottom: 0;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 70%;
+  height: 20vh;
   overflow-x: auto;
 }
 .user-hand span{
+  margin: 5px;
+  padding: 1px 0;
   font-size: 100px;
   cursor: pointer;
+  border-radius: 5px;
 
+}
+.dashboard{
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 25%;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+}
+.cancel{
+  height: 50px;
+  font-size: 30px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(34, 33, 33)
+}
+.dashboard a{
+  background-color: rgb(10, 57, 104);
+  padding: 10px;
+  color: white;
+  font-size: 35px;
+  text-decoration: none;
+  margin: 0 10px;
+  border-radius: 5px;
 }
 .msg-turn{
   font-size: 25px;

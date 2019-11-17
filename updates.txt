@@ -101,8 +101,7 @@ I also have to fix the case when neither the user or the opponent have a double 
 1)Fixed problem with button in when the game is tied. Before it wasn't being displayed.
 2)Fixed problem: when the game was tied, if you clicked anywhere a message with "You won" was displayed and one point was given. Now that doesn't happen anymore and was happening because I didn't insert the n=99 line of code.
 
-
-09/11/2019
+#09/11/2019
 Now I'm back to develop the last part of the front end and start implementing the back-end (the part I enjoy the most doing). Of course I'll have to learn some basic stuff about node (without any frameworks which should be interesting) and start to implement the functions that make the game possible to play multiplayer. Let's see what I can do.
 
 Goals for today:
@@ -113,40 +112,37 @@ Goals for today:
 When clicked on play, the user will need to choose the difficulty. I can do this with a simple select input. For now I won't change anything but it's a start.
 
 
-11/11/2019
+#11/11/2019
 
 1)Implemented rough scketch of the initial and difficulty menu.
 
 
-16/11/2019
+#16/11/2019
 Today I started to implement the http calls from the client to the remote server. 
 1)Finished setting up register http calls.
 
-wvict, test, "a7724d5076735d9f20160cbfe9a92a0d", 
-hand: Array(7)
-0: (2) [2, 0]
-1: (2) [6, 0]
-2: (2) [3, 3]
-3: (2) [6, 4]
-4: (2) [6, 5]
-5: (2) [0, 0]
-6: (2) [3, 2]
+Created two users:
+wvict, test
+user2, user2				
 
-user2, user2, "a7724d5076735d9f20160cbfe9a92a0d",
-0: (2) [5, 3]
-1: (2) [4, 1]
-2: (2) [5, 5]
-3: (2) [5, 2]
-4: (2) [6, 6]
-5: (2) [6, 3]
-6: (2) [1, 1]
-								################
-									THINGS DONE:
+Right now two users can be paired for a game (they have the same game id).
+
+I managed to get the Server Sent Event response from the server. Now I need to create the functions necessary to allow the two users to play against each other.
+
+Perhaps I should focus now on implementing the feature that enables the user to pick the side he/she wants to play the domino tile.
+
+17/11/2019
+1)Implemented feature that allows users to choose each side of the board to play the domino tile.
+
+Things I need to do:
 1) Create a dashboard where the users will play the game against the comptuter (first part). Then I need to implement a multiplayer game.
 2) Inside the area where the game will be played I need to separate things:
 		a)user hand
 		b)opponent hand
 		c)deck of tiles when user pass its turn
+
+                                 ################
+								    THINGS DONE:
 5)Find a way insert the tiles correctely into the board.(DONE)
 6)Update opponents tiles while he/she puts them into the board.(DONE)
 7)Remove from the deck the tiles that are already in the game (from the board, the user hand and the opponent's hand). (DONE)	
@@ -167,6 +163,7 @@ user2, user2, "a7724d5076735d9f20160cbfe9a92a0d",
 23)The computer still makes wrongs plays. I have to fix that.(DONE - problem with positioning of playUser and playOpp)
 24)Right now there are duplicate domino tiles (only in the deck for what I can tell). I have to fix that.(DONE - the problem was in how I took tiles from the allTiles variable).
 25)Fix problem with double in the beginning of the game. If neither the user or computer has one, then it should take the [6,6] tile from the deck. (DONE)
+26)Fix how the domino tiles are displayed in the board. Right now they keep sliding to the right or left when the user and opp play their turns.
 27)Create classification modal.(DONE)
 28)Create instruction modal.(DONE)
 29)Create give up button.(DONE)
@@ -184,8 +181,7 @@ user2, user2, "a7724d5076735d9f20160cbfe9a92a0d",
 26)Fix how the domino tiles are displayed in the board. Right now they keep sliding to the right or left when the user and opp play their turns.
 33)Fix problem: right now if neither the user or the opponent have a double piece, nothing happens. When that's the case, I need to shuffle the tiles again and redistribute them.
 34)Fix problem: if the player clicks in the opp tile that has the same position of a tile the user can play, then the play will be made. That's because both have the same span tag and the id equal to the position in the array.
-35)Implement medium and hard difficulties.
-
-
+35)Implement easy, medium and hard difficulties.
+37)
 
 

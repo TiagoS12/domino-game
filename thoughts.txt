@@ -1,0 +1,38 @@
+Join response ->
+
+{game: "69142bdad0e71c026b89de698c9ba79b", hand: Array(7)}
+game: "69142bdad0e71c026b89de698c9ba79b"
+hand: Array(7) 
+0: (2) [5, 2]
+1: (2) [6, 2]
+2: (2) [3, 3]
+3: (2) [3, 0]
+4: (2) [6, 5]
+5: (2) [4, 4]
+6: (2) [6, 6]
+length: 7
+
+
+SSE response->
+
+board:
+    count:
+        user2: 7
+        wvict: 7
+        __proto__: Object
+    line: []
+    stock: 14
+    __proto__: Object
+    turn: "user2"
+
+After that, each user while making a play needs to make a http call with the argument notify with the following body:
+
+{ "nick": "wvict", "pass": "test", "game": "2fd9d…", "piece": "[6,6]" } 
+
+At least I found a way to make the userTiles variable global.
+
+LOGIC:
+0) Make sure both users registered and made the join call.
+1) If username is equal to the user in the turn object, then make http request (notify).
+2) If not, return error message.
+

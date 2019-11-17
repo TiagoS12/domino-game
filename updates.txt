@@ -131,8 +131,20 @@ I managed to get the Server Sent Event response from the server. Now I need to c
 
 Perhaps I should focus now on implementing the feature that enables the user to pick the side he/she wants to play the domino tile.
 
-17/11/2019
+#17/11/2019
 1)Implemented feature that allows users to choose each side of the board to play the domino tile.
+
+Right now I have to think of a way to implement the http calls into the web app. For that I think I'll need to actually take a step back and plan my approuch.
+
+I got to the point where I finished implementing the register and join api calls. But I'm clueless to how I'm going to make two players play against each other. That's something I have to figure out today.
+
+2)Implemented rough mechanism of multiplayer game. However I still need to implement the deck funcionality (http requests).
+3)Users can now see who's turn it is.
+4)Number of opponent's tile is now being updated every play.
+
+
+
+
 
 Things I need to do:
 1) Create a dashboard where the users will play the game against the comptuter (first part). Then I need to implement a multiplayer game.

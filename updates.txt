@@ -101,6 +101,38 @@ I also have to fix the case when neither the user or the opponent have a double 
 1)Fixed problem with button in when the game is tied. Before it wasn't being displayed.
 2)Fixed problem: when the game was tied, if you clicked anywhere a message with "You won" was displayed and one point was given. Now that doesn't happen anymore and was happening because I didn't insert the n=99 line of code.
 
+#09/11/2019
+Now I'm back to develop the last part of the front end and start implementing the back-end (the part I enjoy the most doing). Of course I'll have to learn some basic stuff about node (without any frameworks which should be interesting) and start to implement the functions that make the game possible to play multiplayer. Let's see what I can do.
+
+Goals for today:
+1)Implement login front-end - add username and password inputs.
+2)Create menu that leads to the game. Add the following items:
+	a)Play
+	b)Rules
+When clicked on play, the user will need to choose the difficulty. I can do this with a simple select input. For now I won't change anything but it's a start.
+
+
+#11/11/2019
+
+1)Implemented rough scketch of the initial and difficulty menu.
+
+
+#16/11/2019
+Today I started to implement the http calls from the client to the remote server. 
+1)Finished setting up register http calls.
+
+Created two users:
+wvict, test
+user2, user2				
+
+Right now two users can be paired for a game (they have the same game id).
+
+I managed to get the Server Sent Event response from the server. Now I need to create the functions necessary to allow the two users to play against each other.
+
+Perhaps I should focus now on implementing the feature that enables the user to pick the side he/she wants to play the domino tile.
+
+17/11/2019
+1)Implemented feature that allows users to choose each side of the board to play the domino tile.
 
 Things I need to do:
 1) Create a dashboard where the users will play the game against the comptuter (first part). Then I need to implement a multiplayer game.
@@ -108,8 +140,9 @@ Things I need to do:
 		a)user hand
 		b)opponent hand
 		c)deck of tiles when user pass its turn
-3)Create authentication system.
-4)Find a way to make the center piece to not move when the other tiles are inserted.
+
+                                 ################
+								    THINGS DONE:
 5)Find a way insert the tiles correctely into the board.(DONE)
 6)Update opponents tiles while he/she puts them into the board.(DONE)
 7)Remove from the deck the tiles that are already in the game (from the board, the user hand and the opponent's hand). (DONE)	
@@ -119,15 +152,14 @@ Things I need to do:
 11)Now that I completed item 10) I need to create a way keep track of all the tiles in the game and distribute them to the user, the oponent, the board and the stock.(DONE)
 12)Right now there are times that the user only gets 6 domino tiles and not 7. I have to fix that. (DONE - I only had to put the i++ inside the if statement).
 13)Find a way to convert between utf icons to the characters of the domino tile and, therefore, do what I have to do with it. (DONE)
-14)Create the system of turns.
+14)Create the system of turns.(DONE)
 15)Implement each play.(DONE)
-16)Go throught the rules and create a feature that deals with each one of them.
-17)Develop the IA of opponent (which for now will be a bot).
+16)Go throught the rules and create a feature that deals with each one of them.(TOO GENERAL)
+17)Develop the IA of opponent (which for now will be a bot). (DONE)
 18)Create a way to update the moves variable with the current left and right values of the game. (DONE)
-19)Find a way to distinguish between left and right moves - and allow an option for the player.
 20)implement way of correctaly inserting the pieces the player wants to play. (DONE)
 21)Implement the computer's play.(DONE)
-22)Implement the deck (DONE PARTIALLY)
+22)Implement the deck (DONE)
 23)The computer still makes wrongs plays. I have to fix that.(DONE - problem with positioning of playUser and playOpp)
 24)Right now there are duplicate domino tiles (only in the deck for what I can tell). I have to fix that.(DONE - the problem was in how I took tiles from the allTiles variable).
 25)Fix problem with double in the beginning of the game. If neither the user or computer has one, then it should take the [6,6] tile from the deck. (DONE)
@@ -138,9 +170,18 @@ Things I need to do:
 30)Create pass button.(DONE)
 31)Create a restart game system.(DONE)
 32)Implement score system in the game.(DONE)
+36)Fix problem: if you click a lot in multiple playable tiles, they will be added to the board. (DONE - partially: when you click on tiles that can be played then they are added multiple times, but if the tile cannot be played, nothing happens. I have to fix that)
+
+
+									################
+									NEED TO BE DONE:
+3)Create authentication system.
+4)Find a way to make the center piece to not move when the other tiles are inserted.
+19)Find a way to distinguish between left and right moves - and allow an option for the player.
+26)Fix how the domino tiles are displayed in the board. Right now they keep sliding to the right or left when the user and opp play their turns.
 33)Fix problem: right now if neither the user or the opponent have a double piece, nothing happens. When that's the case, I need to shuffle the tiles again and redistribute them.
 34)Fix problem: if the player clicks in the opp tile that has the same position of a tile the user can play, then the play will be made. That's because both have the same span tag and the id equal to the position in the array.
 35)Implement easy, medium and hard difficulties.
-36)Fix problem: if you click a lot in multiple playable tiles, they will be added to the board.
 37)
+
 

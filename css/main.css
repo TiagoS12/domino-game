@@ -2,6 +2,94 @@ body{
   margin: 0;
   padding: 0;
 }
+.authentication{
+  padding: 10px;
+  width: 400px;
+  height: 300px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px 8px rgba(0,0,0,.2);
+}
+.authentication form{
+  height: 100%;
+  text-align: center;
+}
+.authentication form input{
+  margin: 10px auto;
+  padding: 5px;
+  width: 80%;
+  font-size: 25px;
+  border: solid 1px black;
+  border-radius: 5px;
+}
+.authentication form button{
+  font-size: 25px;
+  margin: 30px auto;
+  width: 150px;
+}
+.start-menu{
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #235789;
+
+}
+
+.start-menu ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.start-menu ul li{
+  padding: 0;
+  width: 100%;
+  background-color: rgba(0,0,0,.8);
+  margin-top: 20px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.start-menu ul li:hover{
+  background-color: rgba(0,140,150);
+}
+.start-menu ul li a {
+  font-size: 30px;
+  text-decoration: none;
+  color: white;
+}
+.initial{
+  display: none;
+  padding: 10px;
+  width: 400px;
+  height: 300px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px 8px rgba(0,0,0,.2);
+}
+.initial p{
+  font-size: 30px;
+  text-align: center;
+}
+.difficulty{
+  padding: 10px;
+  display: none;
+  width: 400px;
+  height: 300px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.radio-diff{
+  position: relative;
+  width: 100px;
+  margin-bottom: 50px;
+}
 .modal{
   position: absolute;
   top: 0;
@@ -44,26 +132,13 @@ body{
   cursor: pointer;
   color: white;
 }
-.authentication{
-  display: none;
-}
-.authentication form{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 400px;
-  height: 300px;
-  margin: auto;
-  background-color: blue;
-}
-.body{
+
+.game{
   position: relative;
   height: 100vh;
   margin: 0;
   padding: 0;
-
+  display: none;
 }
 nav{
   position: relative;
@@ -155,13 +230,46 @@ nav span{
   bottom: 0;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 70%;
+  height: 20vh;
   overflow-x: auto;
 }
 .user-hand span{
+  margin: 5px;
+  padding: 1px 0;
   font-size: 100px;
   cursor: pointer;
+  border-radius: 5px;
 
+}
+.dashboard{
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 25%;
+  height: 20vh;
+  justify-content: center;
+  align-items: center;
+}
+.cancel{
+  height: 50px;
+  font-size: 30px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
+  background-color: rgb(34, 33, 33)
+}
+.dashboard a{
+  background-color: rgb(10, 57, 104);
+  padding: 10px;
+  color: white;
+  font-size: 35px;
+  text-decoration: none;
+  margin: 0 10px;
+  border-radius: 5px;
 }
 .msg-turn{
   font-size: 25px;

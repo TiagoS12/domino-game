@@ -102,6 +102,7 @@ function setAllTiles(){ //Creates an array with all the domino tiles used in the
 }
 
 function setTiles(){//sets the user hand (and right now it also sets the opponent hand only for testing purposes)
+  
   for(let i = 0; i<7;i++){
     let t = allTiles.shift()
     userTiles.push(t)
@@ -112,10 +113,10 @@ function setTiles(){//sets the user hand (and right now it also sets the opponen
   }
 
   for (let i=0;i<userTiles.length;i++){
-    userHand.innerHTML += `<span id="${i}">${valueToVerticalHtml(userTiles[i])}</span>`
+    userHand.innerHTML += `<span id="${i}" class="usr" >${valueToVerticalHtml(userTiles[i])}</span>`
   }
   for (let i=0;i<opponentTiles.length;i++){
-    opponentHand.innerHTML += `<span id="${i}">&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag
+    opponentHand.innerHTML += `<span>&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag
   }
 }
 
@@ -130,7 +131,7 @@ function checkIfItIsDouble(value){
 function updateUserTiles(tiles){
   userHand.innerHTML = ''
   for (let i=0;i<userTiles.length;i++){
-    userHand.innerHTML += `<span id="${i}">${valueToVerticalHtml(userTiles[i])}</span>`
+    userHand.innerHTML += `<span id="${i}" class="usr">${valueToVerticalHtml(userTiles[i])}</span>`
   }
 
 
@@ -138,7 +139,7 @@ function updateUserTiles(tiles){
 function updateOpponentTiles(tiles){
   opponentHand.innerHTML = ''
   for (let i=0;i<opponentTiles.length;i++){
-    opponentHand.innerHTML += `<span id="${i}">&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag &#127074;
+    opponentHand.innerHTML += `<span>&#127074;</span>`//to see the opp tiles again, just insert ${valueToVerticalHtml(opponentTiles[i])} inside the span tag &#127074;
   }
 }
 

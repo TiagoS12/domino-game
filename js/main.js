@@ -24,8 +24,13 @@ registerForm.addEventListener('submit', function(event){
   event.preventDefault()
   let username = usernameInput.value
   let password = passwordInput.value
-  initialMenu.style.display = 'block'
-  authMenu.style.display = 'none'
+  if ((username == "tiago" && password == "passtiago") || (username == "weslley" && password == "passwesley")){
+    initialMenu.style.display = 'block'
+    authMenu.style.display = 'none'
+  }
+  else{
+    alert("Username or Password wrong. Try again")
+  }
 
   /*register call to server*/
   fetch('http://twserver.alunos.dcc.fc.up.pt:8008/register', {
@@ -34,7 +39,7 @@ registerForm.addEventListener('submit', function(event){
   })
   .then(response=>response.json())
   .then(data=>console.log(data))
-  
+
 })
 /* Menu Interaction */
 const menu = document.querySelector('.start-menu')
@@ -56,7 +61,7 @@ difficultyForm.addEventListener('submit', function(e){
   game.style.display = 'block'
   menu.style.display = 'none'
   //console.log(username, password)
-  
+
 /*
   //join match
   fetch('http://twserver.alunos.dcc.fc.up.pt:8008/join', {
@@ -68,12 +73,12 @@ difficultyForm.addEventListener('submit', function(e){
 })
 
 async function updatePlay(response){
-    
+
   let game = await response.game
   let userTiles = await response.hand
   console.log(response)
   fetch('http://twserver.alunos.dcc.fc.up.pt:8008/update?nick='+username+'&game='+game)
-  
+
   const eventSource = new EventSource('http://twserver.alunos.dcc.fc.up.pt:8008/update?nick='+username+'&game='+game)
   eventSource.onmessage = function(event) {
       const data = JSON.parse(event.data);
@@ -81,7 +86,7 @@ async function updatePlay(response){
   }
     //setAllTiles()
   //setTiles(userTiles)
-  //firstMoveComputer() 
+  //firstMoveComputer()
 }
 
 */
@@ -136,16 +141,16 @@ window.onclick = function(element){
       if(n == 1){
         right.style.display = 'none'
         left.style.display = 'none'
-        
-        if(playUser.nextPiecesLeft.includes(parseInt(element.target.id))){      
+
+        if(playUser.nextPiecesLeft.includes(parseInt(element.target.id))){
           left.style.display = 'block'
         }
         if(playUser.nextPiecesRight.includes(parseInt(element.target.id))){
           right.style.display = 'block'
         }
       }
-      
-     
+
+
     }
 
     if(element.target == document.querySelector('.cancel')){
@@ -155,7 +160,7 @@ window.onclick = function(element){
       }
       dashboard.style.display = 'none'
     }
-  
+
   if(n == 0 && (element.target.className == 'right' || element.target.className == 'left')){//first play by the user
     let data = checkWhoGotBiggerDouble()//returns object with the player who has the biggest double with its position
     //'&#'+element.target.innerHTML.codePointAt(0)+';'//This was the answer!
@@ -177,7 +182,7 @@ window.onclick = function(element){
     n = 2
     msgTurn.innerHTML = 'Opponent\'s turn'
     dashboard.style.display = 'none'
-    
+
   }
 
   if(n ==1){
@@ -213,7 +218,7 @@ window.onclick = function(element){
     if(element.target.className == 'right'){
       dashboard.style.display = 'none'
       if(playUser.nextPiecesRight.includes(pos)){
-        
+
         let where = 'right'
         //if tile selected is a sutable piece for play on the right side:
         let t = userTiles.splice(pos,1)
@@ -238,7 +243,7 @@ window.onclick = function(element){
         moves = updateMoves(board)
         //update play variable
         playUser = nextPlayUser()//this keeps refreshing
-        
+
         n = 2
         msgTurn.innerHTML = 'Opponent\'s turn'
       }
@@ -251,10 +256,10 @@ window.onclick = function(element){
         //if tile selected is a sutable piece for play on the left side:
         let t = userTiles.splice(pos,1)
         let code = t[0]
-  
+
         //then i need to add them to the board array and update the front-end
         board.unshift(orderHorizontalTilesForBoard(code, moves[0], where))
-  
+
         //update userHand
         updateUserTiles(userTiles)
         //update tiles on board
@@ -269,12 +274,12 @@ window.onclick = function(element){
         }
         moves = updateMoves(board)
         playUser = nextPlayUser()//this keeps refreshing
-  
+
         n=2
         msgTurn.innerHTML = 'Opponent\'s turn'
       }
     }
-    
+
   }
   //WHEN THE USER WINS THE GAME
   if(userTiles.length == 0 && n!=99){
